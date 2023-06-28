@@ -47,28 +47,31 @@ class _WelcomeState extends State<Welcome> {
                 child: Column(
                   children: <Widget>[
                     Expanded(
-                        child: Container(
-                          width: double.infinity,
+                        child: SingleChildScrollView(
+                          child: Container(
+                            width: double.infinity,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          const SizedBox(height: 100),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: Text(input,style: const TextStyle(fontSize: 32,color:Colors.black54),),
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            const SizedBox(height: 100),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+
+                              child: Container(
+                                child: Text(input,style: const TextStyle(fontSize: 32,color:Colors.black54),),
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(child:
-                              Text(output,style: const TextStyle(fontSize: 42),),),
-                          ),
-                        ],
+                            const SizedBox(height: 8),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(child:
+                                Text(output,style: const TextStyle(fontSize: 42),),),
+                            ),
+                          ],
                       ),
-                    )),
+                    ),
+                        )),
                     Expanded(
                       flex: 2,
                       child: Padding(
@@ -158,7 +161,7 @@ class _WelcomeState extends State<Welcome> {
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
 
-    output = eval.toString();
+    output = eval.toStringAsPrecision(9);
 
   }
 }
