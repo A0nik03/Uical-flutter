@@ -121,7 +121,7 @@ class _WelcomeState extends State<Welcome> {
                                     });
                                   },
                                   buttonText: buttons[index],
-                                  color: Colors.green.shade700,
+                                  color: Colors.lightBlue,
                                   textColor: Colors.white,
                                 );
                               } else if (index == 0) {
