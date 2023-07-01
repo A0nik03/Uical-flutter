@@ -11,16 +11,32 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
- //variables
+  //variables
+  String x = "*";
   var input = '';
   var output = '';
 
   final List<String> buttons = [
-    'AC', 'C', '%', '/',
-    '7', '8', '9', '*',
-    '4', '5', '6', '-',
-    '1', '2', '3', '+',
-    '0', '.','ANS','=',
+    'AC',
+    'C',
+    '%',
+    '/',
+    '7',
+    '8',
+    '9',
+    'x',
+    '4',
+    '5',
+    '6',
+    '-',
+    '1',
+    '2',
+    '3',
+    '+',
+    '0',
+    '.',
+    'ANS',
+    '=',
   ];
 
   @override
@@ -48,120 +64,132 @@ class _WelcomeState extends State<Welcome> {
                   children: <Widget>[
                     Expanded(
                         child: SingleChildScrollView(
-                          child: Container(
-                            width: double.infinity,
-                      child: Column(
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             const SizedBox(height: 100),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-
-                              child: Container(
-                                child: Text(input,style: const TextStyle(fontSize: 32,color:Colors.black54),),
+                              child: Text(
+                                input,
+                                style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.indigoAccent.shade400,),
                               ),
                             ),
                             const SizedBox(height: 8),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Container(child:
-                                Text(output,style: const TextStyle(fontSize: 42),),),
+                              child: Text(
+                                output,
+                                style:  TextStyle(
+                                    fontSize: 42, color: Colors.indigoAccent.shade700,),
+                              ),
                             ),
                           ],
+                        ),
+                      ),
+                    )),
+                    const Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Divider(
+                        thickness: 2,
+                        height: 1,
+                        color: Colors.black,
                       ),
                     ),
-                        )),
                     Expanded(
                       flex: 2,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                            alignment: Alignment.bottomCenter,
-                            child: GridView.builder(
-                              itemCount: buttons.length,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 4),
-                              itemBuilder: (BuildContext context, int index) {
-                                if(index == 19){
-                                  return MyButton(
-                                    buttonTapped: (){
-                                      setState(() {
-                                        equalPressed();
-                                      });
-                                    },
-                                    buttonText: buttons[index],
-                                    color: Colors.blueAccent.withOpacity(0.8),
-                                    textColor: Colors.white,
-                                  );
-                                }
-                                else if(index == 0){
-                                  return MyButton(
-                                    buttonTapped: (){
-                                      setState(() {
-                                        input = '';
-                                        output = '';
-                                      });
-                                    },
-                                    buttonText: buttons[index],
-                                    color: isOperator(buttons[index])?Colors.blue[100]?.withOpacity(0.5):Colors.grey[200]?.withOpacity(0.5),
-                                    textColor: Colors.blue[100],
-                                  );
-                                }
-                                else if(index == 1){
-                                  return MyButton(
-                                    buttonTapped: (){
-                                      setState(() {
-                                        input = input.substring(0,input.length-1);
-                                      });
-                                    },
-                                    buttonText: buttons[index],
-                                    color: isOperator(buttons[index])?Colors.blue[100]?.withOpacity(0.5):Colors.grey[200]?.withOpacity(0.5),
-                                    textColor: Colors.red[50],
-                                  );
-                                }
-                                else{
-                                  return MyButton(
-                                    buttonTapped: (){
-                                      setState(() {
-                                        input += buttons[index];
-                                      });
-                                    },
-                                    buttonText: buttons[index],
-                                    color: isOperator(buttons[index])?Colors.blue[100]?.withOpacity(0.5):Colors.grey[200]?.withOpacity(0.5),
-                                    textColor: isOperator(buttons[index])?Colors.lightBlue:Colors.white,
-                                  );
-                                }
-                              },
-                            ),
+                          alignment: Alignment.bottomCenter,
+                          child: GridView.builder(
+                            itemCount: buttons.length,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 4),
+                            itemBuilder: (BuildContext context, int index) {
+                              if (index == 19) {
+                                return MyButton(
+                                  buttonTapped: () {
+                                    setState(() {
+                                      equalPressed();
+                                    });
+                                  },
+                                  buttonText: buttons[index],
+                                  color: Colors.green.shade700,
+                                  textColor: Colors.white,
+                                );
+                              } else if (index == 0) {
+                                return MyButton(
+                                  buttonTapped: () {
+                                    setState(() {
+                                      input = '';
+                                      output = '';
+                                    });
+                                  },
+                                  buttonText: buttons[index],
+                                  color: Colors.black,
+                                  textColor: Colors.blue[100],
+                                );
+                              } else if (index == 1) {
+                                return MyButton(
+                                  buttonTapped: () {
+                                    setState(() {
+                                      input =
+                                          input.substring(0, input.length - 1);
+                                    });
+                                  },
+                                  buttonText: buttons[index],
+                                  color: Colors.black,
+                                  textColor: Colors.red[50],
+                                );
+                              } else {
+                                return MyButton(
+                                  buttonTapped: () {
+                                    setState(() {
+                                      input += buttons[index];
+                                    });
+                                  },
+                                  buttonText: buttons[index],
+                                  color: Colors.black,
+                                  textColor: isOperator(buttons[index])
+                                      ? Colors.lightBlue
+                                      : Colors.indigoAccent.shade100,
+                                );
+                              }
+                            },
+                          ),
                         ),
                       ),
                     )
                   ],
-                )
-            ),
+                )),
           ),
         ],
-
       ),
     );
   }
 
   bool isOperator(String x) {
-    if (x == '/' || x == '*' || x == '+' || x == '-' || x == '%') {
+    if (x == '/' || x == 'x' || x == '+' || x == '-' || x == '%') {
       return true;
     }
     return false;
   }
-  void equalPressed(){
+
+  void equalPressed() {
     String finalQuestion = input;
+    finalQuestion = finalQuestion.replaceAll('x', '*');
     Parser p = Parser();
     Expression exp = p.parse(finalQuestion);
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
 
     output = eval.toStringAsPrecision(9);
-
   }
 }
