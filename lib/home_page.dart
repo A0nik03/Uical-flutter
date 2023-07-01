@@ -49,7 +49,7 @@ class _WelcomeState extends State<Welcome> {
             width: double.infinity,
             height: double.infinity,
             child: Image.asset(
-              "assets/5.png",
+              "assets/6.jpg",
               fit: BoxFit.cover,
             ),
           ),
@@ -57,8 +57,8 @@ class _WelcomeState extends State<Welcome> {
             child: Glassmorphism(
                 height: size.height,
                 width: size.width,
-                blur: 25,
-                opacity: 0.2,
+                blur: 50,
+                opacity: 0.4,
                 radius: 20,
                 child: Column(
                   children: <Widget>[
@@ -76,8 +76,8 @@ class _WelcomeState extends State<Welcome> {
                               child: Text(
                                 input,
                                 style: TextStyle(
-                                    fontSize: 40,
-                                    color: Colors.indigoAccent.shade400,),
+                                    fontSize: 35,
+                                    color: Colors.indigoAccent.shade100,),
                               ),
                             ),
                             const SizedBox(height: 8),
